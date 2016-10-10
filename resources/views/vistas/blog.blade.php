@@ -17,7 +17,7 @@
                         </p>
                     </div>
                     <div class="panel-footer panel pull-right">
-                       <a href="{{ url("solo/$id")}}" class="btn btn-primary pull-right">Read More</a>
+                       <a href="{{ url("solo/$id")}}" class="btn btn-primary pull-right">Interested in More</a>
                     </div>
                 </div>
             </div>
