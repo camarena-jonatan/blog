@@ -1,7 +1,4 @@
 @extends('layouts.app')
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,50 +73,88 @@
     }
     </style>
 </head>
+<?php
+    $conexion =  mysqli_connect('localhost','root','camarena','Agenda') or die ("Error en la conexion");
 
-<body style="margin-top:75px;">
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">Brand</a>
+    // forma simplificada
+    $resultado = mysqli_query($conexion,'SELECT * FROM agendas');
+
+    header ('Content-type: text/xml');
+    echo mysqli_XML($resultado);
+    function mysqli_XML($resultado, $nombreDoc='resultados', $nombreItem='item') {
+    $campo = array();
+   
+   // llenamos el array de nombres de campos
+   for ($i=0; $i<mysqli_num_fields($resultado); $i++)
+      $campo[$i] = mysql_field_name($resultado, $i);
+   
+   // creamos el documento XML   
+   $dom = new DOMDocument('1.0', 'UTF-8');
+   $doc = $dom->appendChild($dom->createElement($nombreDoc));
+   
+   // recorremos el resultado
+   for ($i=0; $i<mysqli_num_rows($resultado); $i++) {
+      
+      // creamos el item
+      $nodo = $doc->appendChild($dom->createElement($nombreItem));
+      
+      // agregamos los campos que corresponden
+      for ($b=0; $b<count($campo); $b++) {
+         $campoTexto = $nodo->appendChild($dom->createElement($campo[$b]));
+         $campoTexto->appendChild($dom->createTextNode(mysqli_result($resultado, $i, $b)));
+      }
+   }
+   
+   // retornamos el archivo XML como cadena de texto
+   $dom->formatOutput = true; 
+   return $dom->saveXML();    
+}      
+
+?>
+
+    <body style="margin-top:75px;">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Brand</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li onclick="window.location='{{ url('consultar')}}'"><a>Consultar</a></li>
+                        <li onclick="window.location='{{ url('insertar')}}'"><a>Insertar</a></li>
+                        <li onclick="$('#modal1').modal()"><a href="#">Acerca De...</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
             </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li onclick="window.location='{{ url('consultar')}}'"><a>Consultar</a></li>
-                    <li onclick="window.location='{{ url('insertar')}}'"><a>Insertar</a></li>
-                    <li onclick="$('#modal1').modal()"><a href="#">Acerca De...</a></li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <div class="container" class="west2">
-        <div class=" row ">
-            <div class="col-md-12 ">
-                <div class="flex-center position-ref full-height">
-                    <div class="content ">
-                        <div class="title m-b-md ">
-                            Consultar
+            <!-- /.container-fluid -->
+        </nav>
+        <div class="container" class="west2">
+            <div class=" row ">
+                <div class="col-md-12 ">
+                    <div class="flex-center position-ref full-height">
+                        <div class="content ">
+                            <div class="title m-b-md ">
+                                Consultar
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            <br>
+            <div id="chart-div"></div>
+            {!! $lava->render('DonutChart', 'IMDB', 'chart-div') !!}
         </div>
-        <br>
-        <div id="chart-div"></div>
-      {!! $lava->render('DonutChart', 'IMDB', 'chart-div') !!}
-    </div>
-    </div>
-    <div id="pop-div" style="width:800px;border:1px solid black"></div>
+        </div>
+        <div id="pop-div" style="width:800px;border:1px solid black"></div>
         <div class="modal fade " tabindex="-1 " role="dialog " id="modal1">
             <div class="modal-dialog " role="document ">
                 <div class="modal-content ">
@@ -153,6 +188,6 @@
                 </div>
             </div>
         </footer>
-</body>
+    </body>
 
 </html>

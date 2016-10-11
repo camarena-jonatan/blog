@@ -1,4 +1,4 @@
-@extends('layouts.master') @section('content')
+
 <style>
 .west {
     background-color: #fff;
@@ -51,7 +51,7 @@
     margin-bottom: 30px;
 }
 </style>
-<div class="container" class="west" style="margin-bottom:250px;">
+<div class="container" class="west" style=" margin-top:100px; margin-bottom:250px;">
     <div class=" row">
         <div class="col-md-12">
             <div class="flex-center position-ref full-height">
@@ -108,4 +108,4 @@
             </div>
         
   </div>  
-@endsection
+

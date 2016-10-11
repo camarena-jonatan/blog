@@ -1,4 +1,4 @@
-@extends('layouts.master') @section('content')
+
 <div class="container" ng-app="blog">
     <div class="row">
         <div class="col-md-6">
@@ -176,4 +176,4 @@ function controladorprincipal($scope, $http,$uibModal) {
 
 
 </script>
-@endsection
+

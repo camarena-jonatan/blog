@@ -1,4 +1,4 @@
-@extends('layouts.master') @section('content')
+
 <div class="container">
     <div class="row ">
         @foreach($blogs as $index => $blog)
@@ -46,4 +46,4 @@
         <!-- /.modal-dialog -->
     </div>
 </div>
-@endsection
+

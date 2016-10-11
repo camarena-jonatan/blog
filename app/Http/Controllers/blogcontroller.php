@@ -49,7 +49,7 @@ class blogcontroller extends Controller
 
         $blog->save() ;
         return redirect('/insert');
-    
+        
 
     }
 
@@ -66,12 +66,8 @@ class blogcontroller extends Controller
 
 
     public function shows(){
-
-
         $blog = Blog::first();
-        
         if($blog){
-            
             return view('vistas.home',compact('blog'));
         }else{
             return view('vistas.empty');
@@ -79,18 +75,18 @@ class blogcontroller extends Controller
 
     }
 
-      public function shows2(){
+    public function shows2(){
         $blogs = Blog::all();
         return view('vistas.blog',compact('blogs'));
     }
 
-      public function shows3($id){
+    public function shows3($id){
         
 
 
         $blog = Blog::where('id',$id)->first();
         return view('vistas.solo',compact('blog'));
-    
+        
     }
 
     public function shows4(Request $request){
@@ -101,7 +97,7 @@ class blogcontroller extends Controller
 
 
         return view('vistas.search',compact('blogs'));
-    
+        
     }
 
     public function ObtenerBlosDelUsuarioLogueado(){

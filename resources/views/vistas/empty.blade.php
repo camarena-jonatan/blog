@@ -1,4 +1,4 @@
-@extends('layouts.master') @section('content')
+
 <style>
 .west {
     background-color: #fff;
@@ -64,4 +64,4 @@
         </div>
     </div>
 </div>
-@endsection
+

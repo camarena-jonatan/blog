@@ -23,7 +23,7 @@
         </form>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li onclick="window.location='{{ url('blog')}}'"><a>Blogs</a></li>
+                <li><a href="{{ url('articulo')}}" >Blogs</a></li>
                 <li onclick="$('#modal1').modal()"><a href="#">About</a></li>
                 @if (Auth::guest())
                 <li><a href="{{ url('/login') }}">Login</a></li>
@@ -52,10 +52,10 @@
                         </a>
                     <ul class="dropdown-menu" role="menu">
                         <li>
-                            <a href="{{ url('/insert') }}" onclick="event.preventDefault(); document.getElementById('logout-form2').submit();">
+                            <a href = " {{ url('/insertar2') }}" onclick="event.preventDefault(); document.getElementById('logout-form2').submit();">
                                 Insert
                             </a>
-                            <form id="logout-form2" action="{{ url('/insert') }}" method="POST" style="display: none;">
+                            <form id="logout-form2" action="{{ url('/insertar2') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}
                             </form>
                         </li>
@@ -65,12 +65,6 @@
             </ul>
         </div>
     </div>
-</nav>
-<!-- Scripts -->
-<script src="/js/app.js"></script>
-</ul>
-</div>
-</div>
 </nav>
 <div class="modal fade" tabindex="-1" role="dialog" id="modal1">
     <div class="modal-dialog" role="document">
@@ -88,7 +82,5 @@
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
+w    </div>
+w</div>
