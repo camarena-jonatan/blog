@@ -42,13 +42,13 @@ class blogcontroller extends Controller
     {
         $blog = new Blog();
 
-        $blog->title = $request->get("inputa");
-        $blog->longs = $request->get("inputb");
-        $blog->short = $request->get("inputc");
-        $blog->image = $request->get("inputd");
+        $blog->title = $request->get("input1");
+        $blog->longs = $request->get("input2");
+        $blog->short = $request->get("input3");
+        $blog->image = $request->get("input4");
 
         $blog->save() ;
-        return redirect('/insert');
+        return response()->json(["status" => "success"]);
         
 
     }

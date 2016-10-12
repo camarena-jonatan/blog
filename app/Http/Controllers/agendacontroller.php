@@ -47,6 +47,14 @@ class agendacontroller extends Controller{
         $b = Agenda::where('tipo',2)->count();
         $c = Agenda::where('tipo',3)->count();
 
+        $west = Agenda::count();
+        $first = Agenda::pluck('firstname')->toArray(); 
+        $last = Agenda::pluck('lastname')->toArray(); 
+        $address = Agenda::pluck('address')->toArray(); 
+        $telephone = Agenda::pluck('telephone')->toArray(); 
+
+        
+
         $lava = new Lavacharts;
         $reasons = $lava->DataTable();
         $reasons->addStringColumn('Reasons')
@@ -61,7 +69,7 @@ class agendacontroller extends Controller{
             'width' => 1000
         ]);
     
-        return view('/pages.consultar',compact('lava'));
+        return view('/pages.consultar',compact('lava','west','first','last','address','telephone'));
     }
 
     public function edit($id){

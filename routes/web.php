@@ -28,12 +28,12 @@ Route::get('/insertar', function () {
 
 Route::group(["prefix" => "views"], function(){
 	Route::any('/','blogcontroller@shows');
-	Route::any('/blog','blogcontroller@shows2')->middleware('auth');;
-	Route::any('/solo/{cant}','blogcontroller@shows3')->middleware('auth');;
-	Route::post("/blog/insert",'blogcontroller@store')->middleware('auth');;
-	Route::any('/search','blogcontroller@shows4')->middleware('auth');;
-	Route::get('/vistainsert', function (){return view('vistas.insert');});
-	Route::get('/about/{cant}', function ($cant) {
+	Route::any('blog','blogcontroller@shows2')->middleware('auth');;
+	Route::any('solo/{cant}','blogcontroller@shows3')->middleware('auth');;
+	Route::post("blog/insert",'blogcontroller@store')->middleware('auth');;
+	Route::any('search','blogcontroller@shows4')->middleware('auth');;
+	Route::get('vistainsert', function (){return view('vistas.insert');});
+	Route::get('about/{cant}', function ($cant) {
 		return view('pages.about', compact('cant'));
 	});
 });

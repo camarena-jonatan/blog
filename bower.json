@@ -24,6 +24,10 @@
     "bootstrap": "^3.3.7",
     "components-font-awesome": "^4.6.3",
     "angular-route": "^1.5.8",
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "angular-dragdrop": "^1.0.13",
+    "jquery-ui": "^1.12.1",
+    "angular-dropzone": "^0.1.2",
+    "dropzone": "^4.3.0"
   }
 }
