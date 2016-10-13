@@ -16,10 +16,19 @@ class blogcontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function upload(Request $request){
+
+        $baseLocation = '/Images';
+        $file = $request->file('file');
+
+        $filename = uniqid().'.'.$file->extension();
+        $filepath = $baseLocation.$filename;
+        //$user->ine_file = $filepath;
+        $file->move(public_path($baseLocation), $filename);
+
+        //$file = $request->file('file')->move(base_path() . '/public/images', $imageName);  
+          
         
-        return view("news.newArticle");
     }
     
     /**

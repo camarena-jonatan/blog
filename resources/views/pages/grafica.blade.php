@@ -90,8 +90,8 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li onclick="window.location='{{ url('consultar')}}'"><a>Consultar</a></li>
-                    <li onclick="window.location='{{ url('insertar')}}'"><a>Insertar</a></li>
+                    <li onclick="{{ url('consultar')}}"><a>Consultar</a></li>
+                    <li onclick="{{ url('insertar')}}"><a>Insertar</a></li>
                     <li onclick="$('#modal1').modal()"><a href="#">Acerca De...</a></li>
                 </ul>
             </div>

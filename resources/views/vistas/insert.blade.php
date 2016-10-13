@@ -64,41 +64,41 @@
     </div>
     <div class="container">
         <div class=" row" style="margin-top:150px;>
-            <div class=" col-md-12 ">
-                <div class="flex-center position-ref full-height ">
-                    <div class="content ">
-                        <form id="form2 " ng-submit="submitForm() " >
+            <div class=" col-md-12">
+                <div class="flex-center position-ref full-height">
+                    <div class="content">
+                        <form id="form2" ng-submit="submitForm()" >
                                {{ csrf_field() }}
-                            <div class="form-group ">
-                                    <div class="input-group ">
-                                        <span class="input-group-addon " id="basic-addon1 ">Title</span>
-                                        <input type="text " class="form-control " name="input1 " id="input1 "  aria-describedby="basic-addon1 " ng-model="myForm.input1 " >
+                            <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">Title</span>
+                                        <input type="text" class="form-control" name="input1" id="input1"  aria-describedby="basic-addon1" ng-model="myForm.input1" >
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group ">
-                                    <div class="input-group ">
-                                        <span class="input-group-addon " id="basic-addon1 ">Long</span>
-                                        <input type="text " class="form-control " name="input2 " id="input2 "  aria-describedby="basic-addon1 " ng-model="myForm.input2 ">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">Long</span>
+                                        <input type="text" class="form-control" name="input2" id="input2"  aria-describedby="basic-addon1" ng-model="myForm.input2">
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group ">
-                                    <div class="input-group ">
-                                        <span class="input-group-addon " id="basic-addon1 ">Short</span>
-                                        <input type="text " class="form-control " name="input3 " id="input3 "  aria-describedby="basic-addon1 " ng-model="myForm.input3 ">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">Short</span>
+                                        <input type="text" class="form-control" name="input3" id="input3"  aria-describedby="basic-addon1" ng-model="myForm.input3">
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group ">
-                                    <div class="input-group ">
-                                        <span class="input-group-addon " id="basic-addon1 ">Image</span>
-                                        <input type="text " class="form-control " name="input4 " id="input4 "  aria-describedby="basic-addon1 " ng-model="myForm.input4 ">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon1">Image</span>
+                                        <input type="text" class="form-control" name="input4" id="input4"  aria-describedby="basic-addon1" ng-model="myForm.input4">
                                     </div>
                                 </div>
                                 <br>
-                                <div class="form-group ">
-                                <button type="submit " class="btn btn-primary btn-block ">Insertar</button>
+                                <div class="form-group">
+                                <button type="submit" class="btn btn-primary btn-block">Insertar</button>
                                 </div>
                             </div>
                     </form>
@@ -121,7 +121,7 @@
                 </div>
               </li>
               <li class="span3" style='margin-left:10px;'>
-                <div class="thumbnail" data-drop="true" ng-model='list5' data-jqyoui-options="{accept:'.btn-draggable:not([ng-model=list5])'}"  jqyoui-droppable="{multiple:true}">
+                <div class="thumbnail" data-drop="true" ng-model='list5' data-jqyoui-options="{accept: '.btn-draggable:not([ng-model=list5])'}"  jqyoui-droppable="{multiple:true}">
                   <div class="caption">
                     <div class="btn btn-info btn-draggable" ng-repeat="item in list5" ng-show="item.title" data-drag="{[item.drag]}" data-jqyoui-options="{revert: 'invalid'}" ng-model="list5" jqyoui-draggable="{index: {[$index]},animate:true}">{[item.title]}</div>
                   </div>
@@ -132,3 +132,14 @@
         </div>
     </div>
     
+  <div  class="container">  
+  <form action="/views/uploads" class="dropzone"
+        method="post"
+        enctype="multipart/form-data"
+        ng-dropzone
+        dropzone="dropzone"
+        dropzone-config="dropzoneConfig"
+        event-handlers="{ 'addedfile': dzAddedFile, 'error': dzError }">
+         {{ csrf_field() }}
+  </form>
+  </div>

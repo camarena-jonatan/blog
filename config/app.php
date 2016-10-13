@@ -163,7 +163,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
-
+	Maatwebsite\Excel\ExcelServiceProvider,
         /*
          * Package Service Providers...
          */
@@ -226,7 +226,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
+	'Excel' => Maatwebsite\Excel\Facades\Excel,
     ],
 
 ];

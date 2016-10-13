@@ -8,7 +8,7 @@
     <!-- CSS    -->
     <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="vendor/components-font-awesome/css/app.css" rel="stylesheet">
-    <link rel="stylesheet" href="vendor/components-font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="vendor/components-font-awresome/css/font-awesome.min.css">
     <link rel="stylesheet" href="vendor/jquery-ui/themes/base/jquery-ui.min.css">
     <link rel="stylesheet" href="vendor/datatables.net-dt/jquery.dataTables.min.css">
     <link rel="stylesheet" href="vendor/angular-datatables/dist/css/angular-datatables.css">
@@ -34,7 +34,7 @@
     <div ng-view> </div>
     @include('commons.footer')
     <script>
-    angular.module('blog', ['ngRoute', 'ngDragDrop','ngDropzone']);
+    angular.module('blog', ['ngRoute', 'ngDragDrop', 'ngDropzone']);
     angular.module('blog').config(['$interpolateProvider', '$routeProvider', '$locationProvider', '$httpProvider', function($interpolateProvider, $routeProvider, $locationProvider, $httpProvider) {
         $locationProvider.html5Mode({
             enabled: true,
@@ -69,7 +69,7 @@
 
     angular.module('blog').controller('controladorprincipal', injection);
 
-    function controladorprincipal($scope, $http, $location, $timeout,$log) {
+    function controladorprincipal($scope, $http, $location, $timeout, $log) {
         $scope.myForm = {
             input1: 'title',
             input2: 'long',
@@ -110,6 +110,29 @@
             'title': 'down',
             'drag': true
         }];
+
+        $scope.dzAddedFile = function(file) {
+            $log.log(file);
+        };
+
+        $scope.dzError = function(file, errorMessage) {
+            $log.log(errorMessage);
+        };
+
+        $scope.dropzoneConfig = {
+            options: { // passed into the Dropzone constructor
+                url: '/images',
+                paramName: "file", // The name that will be used to transfer the file
+                maxFilesize: .5, // MB
+                acceptedFiles: 'image/jpeg,image/png,image/gif',
+                parallelUploads: 3,
+                maxFileSize: 30
+            }
+        };
+
+        $scope.upload = function(){
+
+        }
 
     }
     </script>

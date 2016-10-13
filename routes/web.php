@@ -27,6 +27,8 @@ Route::get('/insertar', function () {
 
 
 Route::group(["prefix" => "views"], function(){
+	
+	Route::post('uploads',"blogcontroller@upload");
 	Route::any('/','blogcontroller@shows');
 	Route::any('blog','blogcontroller@shows2')->middleware('auth');;
 	Route::any('solo/{cant}','blogcontroller@shows3')->middleware('auth');;
