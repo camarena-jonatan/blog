@@ -35,13 +35,17 @@ Route::group(["prefix" => "views"], function(){
 	Route::post("blog/insert",'blogcontroller@store')->middleware('auth');;
 	Route::any('search','blogcontroller@shows4')->middleware('auth');;
 	Route::get('vistainsert', function (){return view('vistas.insert');});
+	Route::get('excel', function (){return view('vistas.excel');});
 	Route::get('about/{cant}', function ($cant) {
 		return view('pages.about', compact('cant'));
 	});
+
 });
 
 
-
+Route::get('importExport', 'blogcontroller@importExport');
+Route::get('downloadExcel/{type}', 'blogcontroller@downloadExcel');
+Route::post('blog/excel', 'blogcontroller@importExcel');
 
 // pagina agenda
 Route::get('/agenda', function () {

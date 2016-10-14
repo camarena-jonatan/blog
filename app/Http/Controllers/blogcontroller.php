@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use App\Item;
+
+use DB;
+
+use Excel;
 
 use App\Blog;
 
@@ -16,6 +21,25 @@ class blogcontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function importExport(){
+        return view('importExport');
+    }
+    public function downloadExcel($type){
+    
+    }
+    public function importExcel(Request $request){
+
+        $file =  $request->file('file');
+        
+        $data = Excel::load($file)->get();
+
+        return response()->json([
+            "status" => "excelready", 
+            "info" => $data
+        ]);
+
+    }
     public function upload(Request $request){
 
         $baseLocation = '/Images';
